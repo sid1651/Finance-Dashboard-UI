@@ -13,7 +13,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-  DropdownMenuSeparator,
 } from '../components/ui/dropdown-menu';
 import {
   Tooltip,
@@ -26,9 +25,10 @@ import { toast } from 'sonner';
 import { memo, useState } from 'react';
 import { ImportDialog } from '../components/ImportDialog';
 import { Transaction } from '../types';
+import { BrandLogo } from '../components/BrandLogo';
 
 export const Header = memo(() => {
-  const { userRole, setUserRole, userName, theme, toggleTheme, transactions, settings, updateSettings, addTransactions } = useApp();
+  const { userRole, setUserRole, theme, toggleTheme, transactions, updateSettings, addTransactions } = useApp();
   const [isImportDialogOpen, setIsImportDialogOpen] = useState(false);
 
   const handleExport = (format: 'csv' | 'json') => {
@@ -56,9 +56,15 @@ export const Header = memo(() => {
   return (
     <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-end h-16">
+        <div className="flex items-center h-16">
+          <BrandLogo
+            showText={false}
+            className="pl-12 sm:pl-14 lg:hidden"
+            iconClassName="h-9 w-9 rounded-lg"
+          />
+
           {/* Right Side Controls */}
-          <div className="flex items-center space-x-1.5 sm:space-x-2 lg:space-x-4">
+          <div className="ml-auto flex items-center space-x-1.5 sm:space-x-2 lg:space-x-4">
             {/* Role Switcher */}
             <div className="flex items-center space-x-1 sm:space-x-2">
               <span className="text-sm text-gray-600 dark:text-gray-400 hidden md:block">Role:</span>

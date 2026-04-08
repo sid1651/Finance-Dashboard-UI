@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router';
 import { LayoutDashboard, Receipt, TrendingUp, Settings, Menu, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../components/ui/button';
+import { BrandLogo } from '../components/BrandLogo';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -24,19 +25,7 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed }: { isCollapsed: boolean;
   const SidebarContent = ({ showLabels = true }: { showLabels?: boolean }) => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className={`flex items-center px-6 py-6 ${showLabels ? 'space-x-3' : 'justify-center'}`}>
-        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 dark:from-blue-600 dark:to-blue-800 rounded-lg flex items-center justify-center flex-shrink-0">
-          <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        </div>
-        {showLabels && (
-          <div className="flex flex-col">
-            <span className="text-base font-semibold text-gray-900 dark:text-white">Finance</span>
-            <span className="text-sm text-gray-600 dark:text-gray-400">Dashboard</span>
-          </div>
-        )}
-      </div>
+      <BrandLogo showText={showLabels} className="px-6 py-6" />
 
       {/* Navigation */}
       <nav className="flex-1 px-4 space-y-1">
